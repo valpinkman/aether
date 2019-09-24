@@ -8,15 +8,21 @@
   },
   "main": "public/electron.js",
   "homepage": "./",
+  "dependencies": {
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.2"
+  },
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
     "eject": "react-scripts eject",
-    "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
-    "electron-pack": "electron-builder -m"
+    "electron-pack": "build -mw"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,25 +39,15 @@
       "last 1 safari version"
     ]
   },
-  "dependencies": {
-    "electron-is-dev": "^1.1.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2"
-  },
   "devDependencies": {
     "@rescripts/cli": "^0.0.12",
     "@rescripts/rescript-env": "^0.0.10",
     "concurrently": "^4.1.2",
-    "cross-env": "^6.0.0",
     "electron": "^6.0.10",
     "electron-builder": "^21.2.0",
     "typescript": "^3.6.3",
     "wait-on": "^3.3.0"
   },
-  "rescripts": [
-    "env"
-  ],
   "build": {
     "appId": "com.ledger.live",
     "productName": "Ledger Live",
