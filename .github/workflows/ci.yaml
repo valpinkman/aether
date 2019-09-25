@@ -6,20 +6,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
         with:
           version: 12
+      - name: echo matrix
+        run: echo "${{ matrix.os }}"
       - name: install dependencies
         run: yarn
       - name: build macos
         run: yarn electron-pack:mac
-        if: ${{ matrix.os }} == macos-latest
-      - name: build windows
-        run: yarn electron-pack:windows
-        if: ${{ matrix.os }} == windows-latest
-      - name: build linux
-        run: yarn electron-pack:linux
-        if: ${{ matrix.os }} == ubuntu-latest
