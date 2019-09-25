@@ -1,0 +1,14 @@
+name: CI
+on: [push]
+
+jobs:
+  build-macos:
+    runs-on: macosx-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: yarn
+      - name: build
+        run: yarn electron-pack
+      - name: check build
+        run: ls dist/
