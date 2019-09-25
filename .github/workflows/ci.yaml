@@ -6,7 +6,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-lates, windows-latest, ubuntu-latest]
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
@@ -17,5 +17,5 @@ jobs:
       - name: build macos
         env:
           OS: ${{ matrix.os }}
-        run: yarn electron-pack
-        if: matrix.os == "$OS"
+        run: yarn electron-pack -m
+        if: matrix.os == 'macos-latest'
