@@ -2,11 +2,24 @@ name: CI
 on: [push]
 
 jobs:
-  build-macos:
-    runs-on: macOS-latest
+  build:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@master
+        with:
+          version: 12
       - name: install dependencies
         run: yarn
-      - name: build
-        run: yarn electron-pack
+      - name: build macos
+        run: yarn electron-pack:mac
+        if: ${{ matrix.platform }} == macos-latest
+      - name: build windows
+        run: yarn electron-pack:windows
+        if: ${{ matrix.platform }} == windows-latest
+      - name: build linux
+        run: yarn electron-pack:linux
+        if: ${{ matrix.platform }} == ubuntu-latest
