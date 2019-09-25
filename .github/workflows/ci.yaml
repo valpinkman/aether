@@ -14,8 +14,7 @@ jobs:
           version: 12
       - name: echo matrix
         run: echo "${{ matrix.os }}"
-        if: matrix.os == macos-latest
       - name: install dependencies
         run: yarn
       - name: build macos
-        run: yarn electron-pack:mac
+        run: yarn electron-pack
