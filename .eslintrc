@@ -21,7 +21,10 @@
     "it": true,
     "describe": true,
     "beforeEach": true,
-    "afterEach": true
+    "afterEach": true,
+    "__dirname": true,
+    "process": true,
+    "expect": true
   },
   "plugins": ["@typescript-eslint", "react"],
   "rules": {

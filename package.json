@@ -11,7 +11,7 @@
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
-    "test": "rescripts test",
+    "test": "rescripts test --runInBand",
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "postinstall": "electron-builder install-app-deps",
@@ -36,7 +36,7 @@
   "dependencies": {
     "electron-is-dev": "^1.1.0",
     "react": "^16.10.1",
-    "react-dom": "^16.10.11",
+    "react-dom": "^16.10.1",
     "react-scripts": "3.1.2"
   },
   "devDependencies": {
@@ -55,7 +55,10 @@
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
+    "spectron": "^8.0.0",
     "typescript": "^3.6.3",
     "wait-on": "^3.3.0"
   },
