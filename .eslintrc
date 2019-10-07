@@ -24,7 +24,11 @@
     "afterEach": true,
     "__dirname": true,
     "process": true,
-    "expect": true
+    "expect": true,
+    "Promise": true,
+    "console": true,
+    "fetch": true,
+    "AbortController": true
   },
   "plugins": ["@typescript-eslint", "react"],
   "rules": {

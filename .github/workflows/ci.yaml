@@ -11,11 +11,9 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
         with:
-          version: 12
+          node-version: 12.x
       - name: install dependencies
         run: yarn
-      - name: test
-        run: yarn test
       - name: build macos
         env:
           OS: ${{ matrix.os }}

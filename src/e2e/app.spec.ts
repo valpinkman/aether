@@ -1,7 +1,7 @@
 import { Application } from 'spectron'
 
 let app: Application | null
-describe.only('Test with spectron', function() {
+describe('Test with spectron', function() {
   beforeEach(async () => {
     app = new Application({
       path:

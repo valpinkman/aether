@@ -9,7 +9,21 @@ const BrowserWindow = electron.BrowserWindow
 
 let mainWindow
 
-function createWindow() {
+const installExtensions = async () => {
+  const installer = require('electron-devtools-installer')
+  const forceDownload = !!process.env.UPGRADE_EXTENSIONS
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
+
+  return Promise.all(
+    extensions.map(name => installer.default(installer[name], forceDownload))
+  ).catch(console.log)
+}
+
+async function createWindow() {
+  if (isDev) {
+    await installExtensions()
+  }
+
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
