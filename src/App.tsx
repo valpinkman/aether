@@ -51,11 +51,7 @@ function App() {
         <input onChange={setVal} name="manga title" type="text" />
       </header>
       <div className="content">
-        {results.length > 0 && results.map(result => {
-          console.log(result)
-
-          return <Manga manga={result} key={result.id} />
-        })}
+        {results.length > 0 ? results.map(result => <Manga manga={result} key={result.id} />) : null}
       </div>
     </div>
   )
