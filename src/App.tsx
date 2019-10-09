@@ -1,38 +1,8 @@
-import React, { useState, SyntheticEvent, useEffect } from 'react'
-import { MangaRaw } from './types/MangaTypes'
-import kitsu from './api/kitsu'
+import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import Manga from './components/manga/manga'
 
 function App() {
-  const [value, setValue] = useState('')
-  const [results, setResults] = useState<MangaRaw[]>([])
-
-  const setVal = (e: SyntheticEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
-  }
-
-  useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal
-
-    const search = async (signal: AbortSignal) => {
-      if (!value) return
-      const res = await kitsu.searchManga(value, { method: 'get', signal })
-      console.log(res)
-      if (res && res.length > 0) {
-        setResults(res)
-      }
-    }
-
-    search(signal)
-
-    return () => {
-      controller.abort()
-    }
-  }, [value, setResults])
-
   return (
     <div className="App">
       <header className="App-header">
@@ -48,15 +18,7 @@ function App() {
         >
           Learn React
         </a>
-        <input onChange={setVal} name="manga title" type="text" />
       </header>
-      <div className="content">
-        {results.length > 0 && results.map(result => {
-          console.log(result)
-
-          return <Manga manga={result} key={result.id} />
-        })}
-      </div>
     </div>
   )
 }
