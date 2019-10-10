@@ -16,7 +16,10 @@
     }
   },
   "globals": {
+    "clearTimeout": true,
+    "setTimeout": true,
     "document": true,
+    "window": true,
     "require": true,
     "it": true,
     "describe": true,

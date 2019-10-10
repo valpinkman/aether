@@ -1,11 +1,11 @@
-// @ts-check
+// @ts - check
 
 const electron = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+
+const { app, BrowserWindow } = electron
 
 let mainWindow
 

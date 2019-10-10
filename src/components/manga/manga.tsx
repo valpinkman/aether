@@ -1,29 +1,29 @@
 import React from 'react'
-import { MangaRaw } from '../../types/MangaTypes'
 import styled from 'styled-components'
+import { ComicVineResult } from '../../types/ComicVineTypes'
 
 interface Props {
-  manga: MangaRaw;
+  manga: ComicVineResult;
+  getInfos?: (url: string) => Promise<any>;
 }
 
 const Img = styled.img`
   max-width: 100%;
 `
 
-const Manga = ({ manga }: Props) => {
+const Manga = ({ manga, getInfos }: Props) => {
   return (
     <section>
       <div>
-        <h2>{manga.attributes.titles.en || manga.attributes.titles.en_jp}</h2>
-        <Img src={manga.attributes.posterImage.original} />
-        <ul>
-          {manga.attributes.volumeCount ? (
-            <li>Volumes: {manga.attributes.volumeCount}</li>
-          ) : null}
-          {manga.attributes.chapterCount ? (
-            <li>Chapters: {manga.attributes.chapterCount}</li>
-          ) : null}
-        </ul>
+        <h2>{manga.name}</h2>
+        <Img src={manga.image.original_url} />
+      </div>
+      <div>
+        {getInfos && manga.site_detail_url ? (
+          <button onClick={() => getInfos(manga.api_detail_url)}>
+            get infos
+          </button>
+        ) : null}
       </div>
     </section>
   )
