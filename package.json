@@ -36,7 +36,6 @@
     ]
   },
   "dependencies": {
-    "comicvine-client": "^0.1.2",
     "electron-devtools-installer": "^2.2.4",
     "electron-is-dev": "^1.1.0",
     "firebase": "^7.1.0",
