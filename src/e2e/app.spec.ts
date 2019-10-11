@@ -1,11 +1,11 @@
 import { Application } from 'spectron'
+import path from 'path'
 
 let app: Application | null
 describe('Test with spectron', function() {
   beforeEach(async () => {
     app = new Application({
-      path:
-        '/Users/valpinkman/Projects/new-live/dist/mac/Ledger Live.app/Contents/MacOs/Ledger Live',
+      path: path.resolve(__dirname, '..', '..', 'dist/mac/Aether Manga.app/Contents/MacOs/Aether Manga')
     })
 
     await app.start()

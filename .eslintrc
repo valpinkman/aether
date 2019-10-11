@@ -16,6 +16,8 @@
     }
   },
   "globals": {
+    "navigator": true,
+    "module": true,
     "clearTimeout": true,
     "setTimeout": true,
     "document": true,

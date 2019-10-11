@@ -27,10 +27,12 @@ async function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
     },
   })
+
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
@@ -40,6 +42,7 @@ async function createWindow() {
   if (isDev) {
     mainWindow.webContents.openDevTools()
   }
+
   mainWindow.on('closed', () => (mainWindow = null))
 }
 

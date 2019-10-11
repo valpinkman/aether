@@ -1,19 +1,20 @@
-type Id = number
+type Id = string
 
 export interface User {
   id: Id;
   name?: string;
   email: string;
   picture?: string;
-  owned: Serie[];
-  collections: Collection[];
+  owned: Id[]; // Serie.id
+  collections: Id[]; // Collection.id
 }
 
 export interface Collection {
   id: Id;
+  userId: Id;
   name: string;
-  series: Serie[];
-  private: boolean;
+  series: Id[]; // Serie.id
+  isPrivate: boolean;
 }
 
 export interface Serie {
@@ -21,5 +22,4 @@ export interface Serie {
   name: string;
   picture: string;
   availableIssues: Id[];
-  ownedIssues: Id[];
 }
