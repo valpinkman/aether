@@ -7,20 +7,20 @@ import firebase from '../api/firebase'
 
 const auth = firebase.auth()
 
+const login = async (email: string, password: string) => {
+  return auth.signInWithEmailAndPassword(email, password)
+}
+
+const logout = async () => {
+  return auth.signOut()
+}
+
+const signup = async (email: string, password: string) => {
+  return auth.createUserWithEmailAndPassword(email, password)
+}
+
 export function useUser() {
   const [user, loading, error] = useAuthState(auth)
-
-  const login = async (email: string, password: string) => {
-    return auth.signInWithEmailAndPassword(email, password)
-  }
-
-  const logout = async () => {
-    return auth.signOut()
-  }
-
-  const signup = async (email: string, password: string) => {
-    return auth.createUserWithEmailAndPassword(email, password)
-  }
 
   return {
     user,
@@ -30,6 +30,12 @@ export function useUser() {
     logout,
     signup
   }
+}
+
+export function useIsLoggedIn() {
+  const [user, loading, error] = useAuthState(auth)
+
+  return Boolean(user && !loading && !error)
 }
 
 export function useUserCollections(userId: string) {

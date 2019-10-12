@@ -29,7 +29,7 @@ async function createWindow() {
     height: 768,
     frame: false,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
     },
   })
 

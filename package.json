@@ -7,7 +7,7 @@
     "email": "valentin.d.pinkman@icloud.com"
   },
   "main": "public/electron.js",
-  "homepage": "./",
+  "homepage": ".",
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
@@ -41,13 +41,13 @@
     "firebase": "^7.1.0",
     "isomorphic-unfetch": "^3.0.0",
     "lodash": "^4.17.15",
-    "navi": "^0.13.6",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-firebase-hooks": "^2.1.0",
-    "react-navi": "^0.13.6",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.0",
+    "styled-system": "^5.1.2"
   },
   "devDependencies": {
     "@rescripts/cli": "^0.0.12",
@@ -65,7 +65,9 @@
     "@types/lodash": "^4.14.141",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
+    "@types/react-router-dom": "^5.1.0",
     "@types/styled-components": "^4.1.19",
+    "@types/styled-system": "^5.1.2",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
     "concurrently": "^5.0.0",

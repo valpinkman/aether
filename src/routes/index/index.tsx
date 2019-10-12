@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
-import { ComicVineResult } from './types/ComicVineTypes'
-import { searchVolume, getResource } from './api/comicvine'
-import { useDebounce } from './hooks/useDebounce'
-import { useUser, useCollections, useUserCollections } from './hooks/useFire'
-import Result from './components/search/result'
-import Potion from './components/logos/potion'
+import { ComicVineResult } from '../../types/ComicVineTypes'
+import { searchVolume, getResource } from '../../api/comicvine'
+import { useDebounce } from '../../hooks/useDebounce'
+import { useUser, useCollections } from '../../hooks/useFire'
+import Result from '../../components/search/result'
 
-import './App.css'
+import './index.css'
+import Box, { Container } from '../../components/box/box'
+import Input from '../../components/input/input'
 
 function App() {
   const [value, setValue] = useState('')
@@ -19,7 +20,6 @@ function App() {
   const [results, setResults] = useState<ComicVineResult[]>([])
   const { user, loading, login, logout, signup } = useUser()
   const { create } = useCollections((user ? user.uid : ''))
-  const [col] = useUserCollections((user ? user.uid : ''))
 
   const debouncedValue = useDebounce(value, 500)
 
@@ -62,31 +62,66 @@ function App() {
   }, [debouncedValue, page, setResults])
 
   return (
+    // <Container>
+    //   <h1>Hello</h1>
+    // </Container>
     // <div>
     //   <Potion width="50%" />
     // </div>
     <div className="App">
       <header className="App-header">
-        <input onChange={e => setValue(e.currentTarget.value)} name="manga title" type="text" />
+        {/* <input
+          onChange={e => setValue(e.currentTarget.value)}
+          name="manga title"
+          type="text"
+        /> */}
+        <Input
+          // onChange={e => setValue(e.currentTarget.value)}
+          name="manga title"
+          type="text"
+          color="text.main"
+        />
       </header>
       <div className="content">
         {user ? (
-          <div>
+          <Box bg="background.default">
             <div>{user.email}</div>
             <div>{user.uid}</div>
             <button onClick={() => logout()}>Logout</button>
-            <button onClick={() => create('manga')}>Create Manga Collection</button>
-          </div>
+            <button onClick={() => create('manga')}>
+              Create Manga Collection
+            </button>
+          </Box>
         ) : !user && !loading ? (
           <div>
-            <input type="email" placeholder="email" onChange={e => setEmail(e.currentTarget.value)} />
-            <input type="password" placeholder="password" onChange={e => setPassword(e.currentTarget.value)} />
-            <button onClick={() => mode === 'login' ? login(email, password) : signup(email, password)}>{mode === 'login' ? 'Login' : 'Signup'}</button>
-            <button onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}>switch</button>
-          </div>) : loading ? (
+            <input
+              type="email"
+              placeholder="email"
+              onChange={e => setEmail(e.currentTarget.value)}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              onChange={e => setPassword(e.currentTarget.value)}
+            />
+            <button
+              onClick={() =>
+                mode === 'login'
+                  ? login(email, password)
+                  : signup(email, password)
+              }
+            >
+              {mode === 'login' ? 'Login' : 'Signup'}
+            </button>
+            <button
+              onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
+            >
+              switch
+            </button>
+          </div>
+        ) : loading ? (
           <div>Loading...</div>
-        ) : null
-        }
+        ) : null}
         {infos ? <div>infos found</div> : null}
         {results.length > 0 ? (
           <>
