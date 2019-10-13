@@ -1,10 +1,14 @@
 {
-  "name": "manga-project",
+  "name": "aether-project",
   "version": "0.1.0",
   "private": true,
   "author": {
     "name": "Valentin D. Pinkman",
     "email": "valentin.d.pinkman@icloud.com"
+  },
+  "repository": {
+    "directory": "https://github.com/valpinkman/aether",
+    "url": "https://github.com/valpinkman/aether/issues"
   },
   "main": "public/electron.js",
   "homepage": ".",
