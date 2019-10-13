@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  width?: string
+  width?: string;
 }
 
 export default function Potion({ width = '100%' }: Props) {

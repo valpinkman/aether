@@ -5,13 +5,13 @@ import {
 } from '../types/ComicVineTypes'
 
 type SearchResponse = {
-  status: 'ok' | 'ko'
-  data: ComicVineSearchResponse
+  status: 'ok' | 'ko';
+  data: ComicVineSearchResponse;
 }
 
 type ResourceResponse = {
-  status: 'ok' | 'ko'
-  data: ComicVineResourceResponse
+  status: 'ok' | 'ko';
+  data: ComicVineResourceResponse;
 }
 
 export const searchVolume = async (

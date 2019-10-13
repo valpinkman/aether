@@ -95,9 +95,7 @@
     ]
   },
   "lint-staged": {
-    "*.ts": "eslint --fix",
-    "*.tsx": "eslint --fix",
-    "*.js": "eslint --fix"
+    "*.{js,ts?(x)}": "eslint"
   },
   "build": {
     "appId": "com.valpinkman.aether",

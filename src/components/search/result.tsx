@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { ComicVineResult } from '../../types/ComicVineTypes'
 
 interface Props {
-  entity: ComicVineResult
-  getInfos?: (url: string) => void
+  entity: ComicVineResult;
+  getInfos?: (url: string) => void;
 }
 
 const Img = styled.img`
