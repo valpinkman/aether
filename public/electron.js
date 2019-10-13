@@ -4,7 +4,6 @@ const electron = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
 
-
 const { app, BrowserWindow } = electron
 
 let mainWindow
@@ -27,19 +26,24 @@ async function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
+    minWidth: 1024,
+    minHeight: 768,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
     },
   })
+
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`
+      : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`
   )
 
   if (isDev) {
     mainWindow.webContents.openDevTools()
   }
+
   mainWindow.on('closed', () => (mainWindow = null))
 }
 

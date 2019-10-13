@@ -21,7 +21,7 @@ export interface ComicVineSubResource {
   id: number;
   issue_number?: string;
   name: string;
-  site_detail_url: string;
+  site_detail_url?: string;
 }
 
 export interface ComicVineResult {
@@ -30,18 +30,18 @@ export interface ComicVineResult {
   characters?: ComicVineSubResource[];
   concepts?: ComicVineSubResource[];
   count_of_issues: number;
-  date_added: Date;
-  date_last_updated: Date;
+  date_added: string;
+  date_last_updated: string;
   description: string;
-  first_issue: ComicVineSubResource;
+  first_issue?: ComicVineSubResource;
   id: number;
   image: ComicVineImage;
   issues?: ComicVineSubResource[];
-  last_issue: ComicVineSubResource;
+  last_issue?: ComicVineSubResource;
   locations?: ComicVineSubResource[];
   name: string;
   people?: ComicVineSubResource[];
-  publisher: ComicVineSubResource;
+  publisher?: ComicVineSubResource;
   site_detail_url: string;
   start_year: string;
   resource_type?: string;

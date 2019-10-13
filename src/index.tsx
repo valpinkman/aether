@@ -1,10 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
+import { ThemeProvider } from 'styled-components'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import theme from './styles/theme'
+import App from './routes/index'
+import Login from './routes/login'
+import ProtectedRoute from './routes/protected-route'
+import GlobalStyle from './components/global-style'
+
+import * as serviceWorker from './serviceWorker'
+import './index.css'
+
+const Comp = () => (
+  <Router>
+    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <Switch>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <ProtectedRoute exact path="/">
+          <App />
+        </ProtectedRoute>
+      </Switch>
+    </ThemeProvider>
+  </Router>
+)
+
+ReactDOM.render(<Comp />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

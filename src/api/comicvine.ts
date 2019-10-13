@@ -1,5 +1,8 @@
 import unfetch from 'isomorphic-unfetch'
-import { ComicVineSearchResponse, ComicVineResourceResponse } from '../types/ComicVineTypes'
+import {
+  ComicVineSearchResponse,
+  ComicVineResourceResponse,
+} from '../types/ComicVineTypes'
 
 type SearchResponse = {
   status: 'ok' | 'ko';
@@ -13,14 +16,14 @@ type ResourceResponse = {
 
 export const searchVolume = async (
   query: string,
-  page: number,
+  page: number
 ): Promise<ComicVineSearchResponse> => {
   try {
     const res = await unfetch('http://localhost:5000/search', {
       method: 'post',
       body: JSON.stringify({
         query,
-        page
+        page,
       }),
     })
 
@@ -40,7 +43,9 @@ export const searchVolume = async (
   }
 }
 
-export const getResource = async (url: string): Promise<ComicVineResourceResponse> => {
+export const getResource = async (
+  url: string
+): Promise<ComicVineResourceResponse> => {
   try {
     const res = await unfetch('http://localhost:5000/resource', {
       method: 'post',
