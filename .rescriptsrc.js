@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const { appendWebpackPlugin } = require('@rescripts/utilities')
 
 module.exports = [
-  require.resolve('./.rescripts.env.js'),
   appendWebpackPlugin(new webpack.DefinePlugin({
     'process.env.FIRE_API_KEY': JSON.stringify(process.env.FIRE_API_KEY),
     'process.env.FIRE_AUTH_DOMAIN': JSON.stringify(process.env.FIRE_AUTH_DOMAIN),
@@ -13,5 +12,11 @@ module.exports = [
     'process.env.FIRE_STORAGE_BUCKET': JSON.stringify(process.env.FIRE_STORAGE_BUCKET),
     'process.env.FIRE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIRE_MESSAGING_SENDER_ID),
     'process.env.FIRE_APP_ID': JSON.stringify(process.env.FIRE_APP_ID),
-  }))
+    '__DEV__': process.env.NODE_ENV !== 'production'
+  })),
+  require.resolve('./.rescripts.env.js'),
+  config => ({
+    ...config,
+    target: 'electron-renderer'
+  })
 ]

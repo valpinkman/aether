@@ -28,7 +28,7 @@ export function useUser() {
     error,
     login,
     logout,
-    signup
+    signup,
   }
 }
 
@@ -39,39 +39,53 @@ export function useIsLoggedIn() {
 }
 
 export function useUserCollections(userId: string) {
-  return useCollection(firebase.firestore().collection('collections').where('userId', '==', userId))
+  return useCollection(
+    firebase
+      .firestore()
+      .collection('collections')
+      .where('userId', '==', userId)
+  )
 }
 
 export function useCollections(userId: string) {
   const ref = firebase.firestore().collection('collections')
 
-  const create = useCallback(async (name: string, series: Serie[] = [], isPrivate = true) => {
-    const docRef = await ref.add({
-      name,
-      userId,
-      series,
-      isPrivate
-    })
-    console.log('Document written with ID: ', docRef.id)
-  }, [ref, userId])
+  const create = useCallback(
+    async (name: string, series: Serie[] = [], isPrivate = true) => {
+      const docRef = await ref.add({
+        name,
+        userId,
+        series,
+        isPrivate,
+      })
+      console.log('Document written with ID: ', docRef.id)
+    },
+    [ref, userId]
+  )
 
-  const updateField = useCallback(async (field: string, value: string) => {
-    await ref.doc(userId).update({
-      [field]: value
-    })
-    console.log('Document successfully updated!')
-  }, [ref, userId])
+  const updateField = useCallback(
+    async (field: string, value: string) => {
+      await ref.doc(userId).update({
+        [field]: value,
+      })
+      console.log('Document successfully updated!')
+    },
+    [ref, userId]
+  )
 
-  const updateSeries = useCallback(async (serieId: string) => {
-    await ref.doc(userId).update({
-      series: firebase.firestore.FieldValue.arrayUnion(serieId)
-    })
-    console.log('Document successfully updated!')
-  }, [ref, userId])
+  const updateSeries = useCallback(
+    async (serieId: string) => {
+      await ref.doc(userId).update({
+        series: firebase.firestore.FieldValue.arrayUnion(serieId),
+      })
+      console.log('Document successfully updated!')
+    },
+    [ref, userId]
+  )
 
   return {
     create,
     updateField,
-    updateSeries
+    updateSeries,
   }
 }

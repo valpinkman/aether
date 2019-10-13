@@ -7,19 +7,15 @@ import { useUser, useCollections } from '../../hooks/useFire'
 import Result from '../../components/search/result'
 
 import './index.css'
-import Box, { Container } from '../../components/box/box'
-import Input from '../../components/input/input'
+import Box from '../../components/box/box'
 
 function App() {
   const [value, setValue] = useState('')
   const [page, setPage] = useState(1)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [mode, setMode] = useState('login')
   const [infos, setInfos] = useState<ComicVineResult | null>(null)
   const [results, setResults] = useState<ComicVineResult[]>([])
-  const { user, loading, login, logout, signup } = useUser()
-  const { create } = useCollections((user ? user.uid : ''))
+  const { user, loading, logout } = useUser()
+  const { create } = useCollections(user ? user.uid : '')
 
   const debouncedValue = useDebounce(value, 500)
 
@@ -58,7 +54,6 @@ function App() {
     if (debouncedValue) {
       search(debouncedValue, page, setResults)
     }
-
   }, [debouncedValue, page, setResults])
 
   return (
@@ -75,12 +70,12 @@ function App() {
           name="manga title"
           type="text"
         /> */}
-        <Input
+        {/* <UserInput
           // onChange={e => setValue(e.currentTarget.value)}
           name="manga title"
           type="text"
           color="text.main"
-        />
+        /> */}
       </header>
       <div className="content">
         {user ? (
@@ -92,33 +87,6 @@ function App() {
               Create Manga Collection
             </button>
           </Box>
-        ) : !user && !loading ? (
-          <div>
-            <input
-              type="email"
-              placeholder="email"
-              onChange={e => setEmail(e.currentTarget.value)}
-            />
-            <input
-              type="password"
-              placeholder="password"
-              onChange={e => setPassword(e.currentTarget.value)}
-            />
-            <button
-              onClick={() =>
-                mode === 'login'
-                  ? login(email, password)
-                  : signup(email, password)
-              }
-            >
-              {mode === 'login' ? 'Login' : 'Signup'}
-            </button>
-            <button
-              onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
-            >
-              switch
-            </button>
-          </div>
         ) : loading ? (
           <div>Loading...</div>
         ) : null}

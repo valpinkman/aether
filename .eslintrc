@@ -6,7 +6,8 @@
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "prettier/@typescript-eslint",
-    "prettier/react"
+    "prettier/react",
+    "react-app"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -33,7 +34,8 @@
     "Promise": true,
     "console": true,
     "fetch": true,
-    "AbortController": true
+    "__DEV__": true,
+    "jest": true
   },
   "plugins": ["@typescript-eslint", "react"],
   "rules": {

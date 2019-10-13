@@ -15,11 +15,13 @@ const ProtectedRoute = ({ children, ...rest }: Props) => {
     <Route
       {...rest}
       render={({ location }) => {
-        return user ? children : (
+        return user ? (
+          children
+        ) : (
           <Redirect
             to={{
               pathname: '/login',
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )

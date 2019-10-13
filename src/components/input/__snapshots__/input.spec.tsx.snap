@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components <EmailInput /> should render 1`] = `
+<Styled(styled.div)
+  flexDirection="row"
+  focused={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  title="wrapper"
+  width="400px"
+>
+  <styled.div
+    pr={2}
+  >
+    <WithSpinner>
+      <Styled(User)
+        size="20px"
+      />
+    </WithSpinner>
+  </styled.div>
+  <styled.input
+    bg="transparent"
+    color="text.accent"
+    fontSize={2}
+    maxWidth="100%"
+    onChange={[MockFunction]}
+    placeholder="email"
+    type="email"
+    width="100%"
+  />
+</Styled(styled.div)>
+`;
+
+exports[`components <Input /> should render 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  border: 0;
+  outline: none;
+  font-weight: bold;
+  color: ",
+          [Function],
+          ";
+
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+
+  ::placeholder {
+    color: ",
+          [Function],
+          ";
+  }
+",
+        ],
+      },
+      "displayName": "styled.input",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": "input",
+      "toString": [Function],
+      "usesTheme": true,
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`components <PasswordInput /> should render 1`] = `
+<Styled(styled.div)
+  flexDirection="row"
+  focused={false}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  title="wrapper"
+  width="400px"
+>
+  <styled.div
+    pr={2}
+  >
+    <WithSpinner>
+      <Styled(DoorLock)
+        size="20px"
+      />
+    </WithSpinner>
+  </styled.div>
+  <styled.input
+    bg="transparent"
+    color="text.accent"
+    fontSize={2}
+    maxWidth="100%"
+    onChange={[MockFunction]}
+    placeholder="password"
+    type="password"
+    width="100%"
+  />
+  <ShowingBox
+    onClick={[Function]}
+    opacity={0}
+    pl={1}
+  >
+    <EyeOffIcon
+      size="16px"
+    />
+  </ShowingBox>
+</Styled(styled.div)>
+`;

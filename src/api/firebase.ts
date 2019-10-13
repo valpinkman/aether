@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
@@ -9,7 +9,7 @@ const config = {
   projectId: process.env.FIRE_PROJECT_ID,
   storageBucket: process.env.FIRE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIRE_MESSAGING_SENDER_ID,
-  appId: process.env.FIRE_APP_ID
+  appId: process.env.FIRE_APP_ID,
 }
 
 const initFirebase = () => {

@@ -12,10 +12,17 @@ declare module 'styled-components' {
         paper: string;
       };
       text: {
-        main: string;
         accent: string;
+        shade100: string;
+        shade80: string;
+        shade60: string;
+        shade40: string;
+        shade20: string;
       };
       divider: string;
     };
+    fontSizes: number[];
+    space: number[];
+    breakpoints: string[];
   }
 }

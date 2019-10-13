@@ -2,10 +2,15 @@ import { Application } from 'spectron'
 import path from 'path'
 
 let app: Application | null
-describe('Test with spectron', function() {
+describe.skip('Test with spectron', function() {
   beforeEach(async () => {
     app = new Application({
-      path: path.resolve(__dirname, '..', '..', 'dist/mac/Aether Manga.app/Contents/MacOs/Aether Manga')
+      path: path.resolve(
+        __dirname,
+        '..',
+        '..',
+        'dist/mac/Aether Manga.app/Contents/MacOs/Aether Manga'
+      ),
     })
 
     await app.start()
